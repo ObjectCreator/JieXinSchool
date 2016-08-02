@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.ui.theme" value="simple"/>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+
+	<package name="admin" namespace="/admin" extends="public">
+	
+		<action name="feedbackAction_*" method="{1}" class="feedbackAction">
+			<result name="alist" type="redirectAction">feedbackAction_list</result>
+			<result name="list">/WEB-INF/pages/admin/feedback/jFeedbackListPage.jsp</result>
+			<result name="pcreate">/WEB-INF/pages/admin/feedback/jFeedbackCreate.jsp</result>
+			<result name="reply">/WEB-INF/pages/admin/feedback/jFeedbackUpdate.jsp</result>
+			<result name="pview">/WEB-INF/pages/admin/feedback/jFeedbackView.jsp</result>
+			<result name="myList">/WEB-INF/pages/admin/feedback/jFeedbackMyListPage.jsp</result>
+	
+	
+		</action>
+		
+		<action name="userBaseInfoAction_*" method="{1}" class="userBaseInfoAction">
+			
+			<result name="pupdate">/WEB-INF/pages/admin/userBaseInfo/jUserBaseInfoUpdate.jsp</result>
+			<result name="pview">/WEB-INF/pages/admin/userBaseInfo/jUserBaseInfoView.jsp</result>
+			<result name="history">/WEB-INF/pages/admin/userBaseInfo/LoginLogList.jsp</result>
+		</action>
+		<action name="ceshiAction_*" method="{1}" class="ceshiAction">
+			
+			<result name="ceshi">/WEB-INF/pages/admin/userBaseInfo/ceshi.jsp</result>
+	</action>
+	</package>
+
+	
+	
+</struts>
+	

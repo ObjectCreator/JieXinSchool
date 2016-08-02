@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!--配置数据库 方言，使用oracle数据库  -->
+		<property name="dialect">
+            org.hibernate.dialect.Oracle10gDialect
+        </property>
+		<!-- 配置显示sql语句 -->
+		<property name="show_sql">true</property>
+		<!-- 配置格式化sql -->
+		<property name="format_sql">false</property>
+		<!--配置自动建表  -->
+		<property name="hbm2ddl.auto">none</property>
+		
+		<!-- 设置c3p0连 接数量 -->
+		<property name="hibernate.c3p0.min_size">2</property>
+		<property name="hibernate.c3p0.max_size">2</property>
+		
+		<!-- 	 懒加载，配合web.xml中配置的 openSessionInViewFilter  -->
+		<property name="hibernate.enable_lazy_load_no_trans">true</property>
+        	<!-- 校验模式  JPA  java persistent api -->
+		<property name="javax.persistence.validation.mode">none</property>
+		<!--  加载映射文件 -->
+		<mapping resource="cn/lx/jk/domain/Dept.hbm.xml"></mapping>
+	 	<mapping resource="cn/lx/jk/domain/User.hbm.xml"></mapping> 
+	 	<mapping resource="cn/lx/jk/domain/UserInfo.hbm.xml"></mapping> 
+	 	<mapping resource="cn/lx/jk/domain/Role.hbm.xml"></mapping> 
+	 	<mapping resource="cn/lx/jk/domain/Module.hbm.xml"></mapping> 
+	 	
+	 	<mapping resource="cn/lx/jk/domain/Contract.hbm.xml"></mapping> 
+	 	<mapping resource="cn/lx/jk/domain/ContractProduct.hbm.xml"></mapping> 
+	 	<mapping resource="cn/lx/jk/domain/ExtCproduct.hbm.xml"></mapping> 
+	 	<mapping resource="cn/lx/jk/domain/Factory.hbm.xml"></mapping> 
+	 	
+	 	<mapping resource="cn/lx/jk/domain/Export.hbm.xml"></mapping> 
+	 	<mapping resource="cn/lx/jk/domain/ExportProduct.hbm.xml"></mapping> 
+	 	<mapping resource="cn/lx/jk/domain/ExtEproduct.hbm.xml"></mapping> 
+	 	<mapping resource="cn/lx/jk/domain/LoginLog.hbm.xml"></mapping> 
+	 	<mapping resource="cn/lx/jk/domain/Manager.hbm.xml"></mapping> 
+	 	<mapping resource="cn/lx/jk/domain/Product.hbm.xml"></mapping> 
+	 	<mapping resource="cn/lx/jk/domain/PackingList.hbm.xml"/>
+
+
+	 	<mapping resource="cn/lx/jk/domain/ShippingOrder.hbm.xml"/>
+
+	 	
+
+
+	 
+	 		
+		<mapping resource="cn/lx/jk/domain/Product.hbm.xml"/>
+	 	<mapping resource="cn/lx/jk/domain/Finance.hbm.xml"/>
+		<mapping resource="cn/lx/jk/domain/Invoice.hbm.xml"/>
+		<mapping resource="cn/lx/jk/domain/Feedback.hbm.xml"/>
+		<mapping resource="cn/lx/jk/domain/Type.hbm.xml"/>
+		<mapping resource="cn/lx/jk/domain/UserBaseInfo.hbm.xml"/>
+	</session-factory>
+	
+</hibernate-configuration>

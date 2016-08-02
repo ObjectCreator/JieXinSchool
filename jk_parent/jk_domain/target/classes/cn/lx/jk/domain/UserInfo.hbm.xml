@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.lx.jk.domain">
+	<class name="UserInfo" table="USER_INFO_P" dynamic-insert="true" dynamic-update="true">
+		 <id name="id" >
+            <column name="USER_INFO_ID" />
+            <!-- 共享主键 -->
+            <generator class="assigned">
+          <!--  <param name="property">user</param> -->
+            </generator>
+           
+           <!--  共享主键 -->
+        </id>
+		<!--  用户姓名-->
+		<property name="name" column="NAME" ></property>
+		<!-- 用户直属领导-->
+		<many-to-one name="manager" class="User" column="MANAGER_ID"></many-to-one>
+		
+		<!--入职时间 -->
+		<property name="joinDate" column="JOIN_DATE"></property>
+		<!--薪水  -->
+		
+		<property name="salary" column="SALARY"></property>
+		<!-- 生日 -->
+		<property name="birthday" column="BIRTHDAY"></property>
+		<!-- 性别-->
+		<property name="gender" column="GENDER"></property>
+		<!-- 岗位 -->
+		<property name="station" column="STATION"></property>
+		<!--电话-->
+		<property name="telephone" column="TELEPHONE"></property>
+		<!-- 等级 -->
+		<property name="degree" column="DEGREE"></property>
+		<!-- 说明 -->
+		<property name="remark" column="REMARK"></property>
+		<!-- 排序号 -->
+		<property name="orderNo" column="ORDER_NO"></property>
+		<!-- 创建人 -->
+		<property name="createBy" column="CREATE_BY"></property>
+		<!-- 创建部门 -->
+		<property name="createDept" column="CREATE_DEPT"></property>
+		<!-- 创建时间 -->
+		<property name="createTime" column="CREATE_TIME"></property>
+		<!-- 更新人 -->
+		<property name="updateBy" column="UPDATE_BY"></property>
+		<!--更新时间  -->
+		<property name="updateTime" column="UPDATE_TIME"></property>
+		<!-- 邮箱 -->
+		<property name="email" column="EMAIL"></property>
+		<!-- <one-to-one name="user" class="User"  constrained="true" ></one-to-one> -->
+	</class>
+</hibernate-mapping>

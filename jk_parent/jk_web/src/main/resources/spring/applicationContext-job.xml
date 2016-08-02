@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"       
+	xmlns:p="http://www.springframework.org/schema/p"  
+	xmlns:context="http://www.springframework.org/schema/context"   
+	xmlns:tx="http://www.springframework.org/schema/tx"  
+	xmlns:aop="http://www.springframework.org/schema/aop"  
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+	http://www.springframework.org/schema/beans/spring-beans.xsd    
+	http://www.springframework.org/schema/aop    
+	http://www.springframework.org/schema/aop/spring-aop.xsd    
+	http://www.springframework.org/schema/tx    
+	http://www.springframework.org/schema/tx/spring-tx.xsd    
+	http://www.springframework.org/schema/context    
+	http://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- 定义一个邮件任务类 -->
+	<bean id="deliveryPeriodJob" class="cn.lx.jk.web.job.DeliveryPeriodJob ">
+		<property name="contractService" ref="contractService"></property>
+	</bean>
+	<!-- 定义意见反馈任务类 -->
+	<bean id="feedbackJob" class="cn.lx.jk.web.job.FeedbackJob ">
+		<property name="feedbackService" ref="feedbackService"></property>
+	</bean>
+	<!-- 邮件任务类描述 -->
+	<bean id="mailJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="deliveryPeriodJob"></property>
+		<property name="targetMethod" value="excute"></property>
+	</bean>
+	<!--  定义意见反馈任务类描述-->
+	<bean id="feedbackJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="feedbackJob"></property>
+		<property name="targetMethod" value="excute"></property>
+	</bean>
+	<!-- 邮件触发器  -->
+	<bean id="mailTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="mailJobDetail"></property>
+		<!-- 表达式，每10秒执行一次 -->
+		<property name="cronExpression" value="0 * * * * ? 2017"></property>
+	</bean>
+	<!-- 定义意见反馈触发器 -->
+	<bean id="feedbackTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="feedbackJobDetail"></property>
+		<!-- 表达式，每年的1 4 7 10 月的1号 0点开始执行 -->
+		<property name="cronExpression" value="0 0 0 1 1/3 ? *"></property>
+	</bean>
+	<!-- 总管理容器 -->
+	<bean id="startQuartz" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" >
+		<property name="triggers">
+			<list>
+				<ref bean="mailTrigger"/>
+			</list>
+		</property>
+	</bean>
+	
+	
+	
+</beans>

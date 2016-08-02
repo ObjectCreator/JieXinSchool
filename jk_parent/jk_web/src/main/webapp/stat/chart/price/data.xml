@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chart>
+	<series>
+		<value xid="0">JKF081342/62180</value>
+		<value xid="1">JK040/JK1060338</value>
+		<value xid="2">JK169340/13076</value>
+		<value xid="3">JK020/J859100825</value>
+		<value xid="4">843MA</value>
+	</series>
+	<graphs>
+		<graph gid="30" color="#FFCC00" gradient_fill_colors="#111111, #1A897C">
+			<value xid="0" description="" url="">24384.8</value>
+			<value xid="1" description="" url="">24520</value>
+			<value xid="2" description="" url="">23904</value>
+			<value xid="3" description="" url="">21000</value>
+			<value xid="4" description="" url="">19200</value>
+		</graph>
+	</graphs>
+	<labels>
+		<label lid="0">
+			<x>0</x>
+			<y>20</y>
+			<rotate></rotate>
+			<width></width>
+			<align>center</align>
+			<text_color></text_color>
+			<text_size></text_size>
+			<text><![CDATA[<b>产品销售排行</b>]]></text>
+		</label>
+	</labels>
+</chart>

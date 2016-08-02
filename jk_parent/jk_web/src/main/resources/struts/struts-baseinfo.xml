@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.ui.theme" value="simple"/>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+ 
+	<package name="baseinfo" namespace="/baseinfo" extends="public">
+		 <action name="productAction_*" method="{1}" class="productAction">
+				 <interceptor-ref name="myStack">
+				 	<param name="fileUpload.allowedTypes" >image/jpeg</param>
+		
+				 </interceptor-ref>
+    	
+			<result name="alist" type="redirect">productAction_list</result> 
+			<result name="plist">/WEB-INF/pages/baseinfo/product/jProductListPage.jsp</result>
+			<result name="pcreate">/WEB-INF/pages/baseinfo/product/jProductCreate.jsp</result>
+			<result name="pupdate">/WEB-INF/pages/baseinfo/product/jProductUpdate.jsp</result>
+			<result name="pview">/WEB-INF/pages/baseinfo/product/jProductView.jsp</result>
+			<result name="download" type="stream">
+              <!-- 设置结果类型的参数     ognl表达式在配置文件中的写法-->
+              <param name="contentType">${contentType}</param>
+              <param name="contentDisposition">${contentDisposition}</param> 
+     
+           </result>
+           	<result name="input" >/WEB-INF/pages/baseinfo/product/jProductCreate.jsp</result>
+			<result name="input1" type="redirect">productAction_tocreate</result>
+		</action>
+		 <action name="factoryAction_*" class="factoryAction" method="{1}">
+		    <result name="list">/WEB-INF/pages/baseinfo/factory/jFactoryListPage.jsp</result>		   
+		    <result name="toview">/WEB-INF/pages/baseinfo/factory/jFactoryView.jsp</result>
+		    <result name="tocreate">/WEB-INF/pages/baseinfo/factory/jFactoryCreate.jsp</result>
+		    <result name="toupdate">/WEB-INF/pages/baseinfo/factory/jFactoryUpdate.jsp</result>
+		    
+		 	
+		</action> 			
+		</package>
+
+</struts>
+	
